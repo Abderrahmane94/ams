@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Dore jQuery - Admin Customization with Laravel 8</title>
+    <title>Attendance management system</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
@@ -31,7 +31,7 @@
 
 </head>
 
-<body id="app-container" class="menu-default show-spinner">
+<body id="app-container" class="menu-sub-hidden show-spinner">
 
 @include('doreViews.admin.body.header')
 @include('doreViews.admin.body.mainMenu')

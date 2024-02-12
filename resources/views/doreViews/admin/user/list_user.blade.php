@@ -5,23 +5,11 @@
         <div class="row">
             <div class="col-12">
                 <div class="mb-3">
-                    <h1>Users List</h1>
+                    <h1>قائمة المستخدمين</h1>
                     <div class="text-zero top-right-button-container">
                         <a type="button" href="{{ route('users.add') }}"
-                           class="btn btn-primary btn-lg top-right-button mr-1">{{__('Nouveau Utilisateur')}}</a>
+                           class="btn btn-primary btn-lg top-right-button mr-1">{{__('مستخدم جديد')}}</a>
                     </div>
-                    <nav class="breadcrumb-container d-none d-sm-block d-lg-inline-block" aria-label="breadcrumb">
-                        <ol class="breadcrumb pt-0">
-                            <li class="breadcrumb-item">
-                                <a href="#">الكل</a>
-                            </li>
-                            <li class="breadcrumb-item">
-                                <a href="#">الدعم الدراسي</a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">التحضيري</li>
-                        </ol>
-                    </nav>
-
                 </div>
 
                 <div class="mb-2">

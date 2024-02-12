@@ -5,17 +5,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <div class="col-12">
-        <h5 class="mb-4">{{__('Information Utilisateur')}}</h5>
 
         <div class="card mb-4">
             <div class="card-body">
-                <h5 class="mb-4">Basic</h5>
                 <form class="needs-validation tooltip-label-right" novalidate="novalidate" method="post"
                       action="{{ route('profile.store') }}" enctype="multipart/form-data">
                     @csrf
 
                     <div class="form-group position-relative error-l-50">
-                        <label>Name</label><span class="text-danger">*</span>
+                        <label>الاسم</label><span class="text-danger">*</span>
                         <input type="text" name="name" class="form-control" value="{{ $editData->name }}">
                         <div class="invalid-tooltip">
                             {{__('Name is required')}}
@@ -24,7 +22,7 @@
                     </div>
 
                     <div class="form-group position-relative error-l-50">
-                        <label>E-mail</label><span class="text-danger">*</span>
+                        <label>البريد الالكتروني</label><span class="text-danger">*</span>
                         <input type="email" name="email" class="form-control" value=" {{ $editData->email }}">
                         @error('email')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -35,7 +33,7 @@
                     </div>
 
                     <div class="form-group position-relative error-l-50">
-                        <label>Profile Image</label><span class="text-danger">*</span>
+                        <label>صورة الحساب</label><span class="text-danger">*</span>
                         <div class="controls">
                             <input type="file" name="image" class="form-control" id="image" >  </div>
                     </div>
@@ -48,7 +46,7 @@
                     </div>
 
 
-                    <input type="submit" class="btn btn-primary mb-0" value="{{__('Submit')}}">
+                    <input type="submit" class="btn btn-primary mb-0 text-right" style="float: left;" value="{{__('حفظ')}}">
 
                 </form>
             </div>

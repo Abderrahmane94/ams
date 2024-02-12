@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 class UserController extends Controller
 {
     public function UserView()
@@ -15,7 +16,6 @@ class UserController extends Controller
         return view('doreViews.admin.user.list_user', $data);
 
     }
-
 
     public function UserAdd()
     {
@@ -49,14 +49,12 @@ class UserController extends Controller
 
     }
 
-
     public function UserEdit($id)
     {
         $editData = User::find($id);
         return view('doreViews.admin.user.edit_user', compact('editData'));
 
     }
-
 
     public function UserUpdate(Request $request, $id)
     {
@@ -83,7 +81,6 @@ class UserController extends Controller
 
     }
 
-
     public function UserDelete($id)
     {
         $user = User::find($id);
@@ -96,5 +93,42 @@ class UserController extends Controller
 
         return redirect()->route('users.view')->with($notification);
 
+    }
+
+    public function index()
+    {
+        $data['user'] = User::find(Auth::user()->id);
+        return view('doreViews.admin.userDashboard', $data);
+    }
+
+    public function signIn(Request $request)
+    {
+        // Enregistrement de l'entrée de l'utilisateur
+        $user = Auth::user();
+        $user->last_login_at = Carbon::now();
+        $user->login_status = true;
+        $user->save();
+
+        $notification = array(
+            'message' => 'دخول مسجل بنجاح',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+    }
+
+    public function signOut(Request $request)
+    {
+        // Enregistrement de la sortie de l'utilisateur
+        $user = Auth::user();
+        $user->login_status = false;
+        $user->save();
+
+        $notification = array(
+            'message' => 'خروج مسجل بنجاح',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
     }
 }

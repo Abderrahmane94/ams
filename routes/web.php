@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
@@ -21,9 +22,7 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('doreViews.admin.index');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
 
 
 Route::group(['middleware' => 'auth'], function () {
@@ -68,5 +67,21 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/password/update', [ProfileController::class, 'PasswordUpdate'])->name('password.update');
 
     });
+
+    /// Admin Routes
+
+    Route::prefix('admin')->group(function () {
+        Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    });
+
+    /// User Routes
+
+    Route::prefix('user')->group(function () {
+        Route::get('/dashboard', [UserController::class, 'index'])->name('user.dashboard');
+        Route::post('/signin', [UserController::class, 'signIn'])->name('user.signin');
+        Route::post('/signout', [UserController::class, 'signOut'])->name('user.signout');
+    });
+
+
 
 }); // End Middleware Auth Route

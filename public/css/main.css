@@ -10,6 +10,14 @@ body.show-spinner>main {
   overflow: hidden !important;
 }
 
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+}
+
 /* Hide everything under body tag */
 body.show-spinner>* {
   opacity: 0;

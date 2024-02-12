@@ -44,7 +44,7 @@ class ProfileController extends Controller
         $data->save();
 
         $notification = array(
-            'message' => 'User Profile Updated Successfully',
+            'message' => 'تم تحديث الحساب بنجاح',
             'alert-type' => 'success'
         );
 
