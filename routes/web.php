@@ -7,7 +7,7 @@ use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 
-
+//TODO add permission to routes
 /*
 |--------------------------------------------------------------------------
 | Web Routes

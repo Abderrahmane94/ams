@@ -72,13 +72,9 @@
                                     <p class="list-item-heading mb-0 truncate">{{$user->name}}</p>
                                 </a>
                                 <p class="mb-0 text-muted text-small w-15 w-sm-100">{{$user->email}}</p>
-                                <p class="mb-0 text-muted text-small w-15 w-sm-100">{{$user->created_at}}</p>
-                                <div class="w-15 w-sm-100">
-                                    <span class="badge badge-pill badge-primary">خصوصي</span>
-                                </div>
+                                <p class="mb-0 text-muted text-small w-15 w-sm-100">{{\Carbon\Carbon::parse($user->last_login_at)->toDateString()}}</p>
+
                                 <div>
-
-
                                     <div class="position-absolute card-top-buttons ">
                                         <a href="{{ route('users.edit',$user->id) }}"
                                            class="btn btn-outline-info icon-button">
@@ -87,14 +83,9 @@
                                         <a href="{{ route('users.delete',$user->id) }}"
                                            class="btn btn-outline-danger icon-button" id="delete">
                                             <i class="fa fa-trash-o"></i></a>
-
                                     </div>
-
                                 </div>
-
-
                             </div>
-
                         </div>
                     </div>
                 @endforeach
@@ -137,58 +128,5 @@
             </div>
         </div>
     </div>
-
-    <!-----Modals---->
-    {{--    <div class="modal fade modal-left" id="ajoutModalLeft" tabindex="-1" role="dialog"--}}
-    {{--         aria-labelledby="ajoutModalLeft" aria-hidden="true">--}}
-    {{--        <div class="modal-dialog" role="document">--}}
-    {{--            <div class="modal-content">--}}
-    {{--                <div class="modal-header">--}}
-    {{--                    <h5 class="modal-title">إضافة أستاذ جديد</h5>--}}
-    {{--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
-    {{--                        <span aria-hidden="true">&times;</span>--}}
-    {{--                    </button>--}}
-    {{--                </div>--}}
-    {{--                <div class="modal-body">--}}
-
-    {{--                    <form>--}}
-    {{--                        <div class="form-group">--}}
-    {{--                            <label>Title</label>--}}
-    {{--                            <input type="text" class="form-control" placeholder="">--}}
-    {{--                        </div>--}}
-    {{--                        <div class="form-group">--}}
-    {{--                            <label>Details</label>--}}
-    {{--                            <textarea placeholder="" class="form-control" rows="2"></textarea>--}}
-    {{--                        </div>--}}
-
-    {{--                        <div class="form-group">--}}
-    {{--                            <label>Category</label>--}}
-    {{--                            <select class="form-control">--}}
-    {{--                                <option label="&nbsp;">&nbsp;</option>--}}
-    {{--                                <option value="Flexbox">Flexbox</option>--}}
-    {{--                                <option value="Sass">Sass</option>--}}
-    {{--                                <option value="React">React</option>--}}
-    {{--                            </select>--}}
-    {{--                        </div>--}}
-
-    {{--                        <div class="form-group">--}}
-    {{--                            <label>Status</label>--}}
-    {{--                            <div class="custom-control custom-checkbox">--}}
-    {{--                                <input type="checkbox" class="custom-control-input"--}}
-    {{--                                       id="customCheck1">--}}
-    {{--                                <label class="custom-control-label"--}}
-    {{--                                       for="customCheck1">Completed</label>--}}
-    {{--                            </div>--}}
-    {{--                        </div>--}}
-    {{--                    </form>--}}
-    {{--                </div>--}}
-    {{--                <div class="modal-footer">--}}
-    {{--                    <button type="button" class="btn btn-outline-primary"--}}
-    {{--                            data-dismiss="modal">Cancel</button>--}}
-    {{--                    <button type="button" class="btn btn-primary">Submit</button>--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--    </div>--}}
 
 @endsection

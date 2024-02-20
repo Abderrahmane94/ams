@@ -64,16 +64,17 @@
                         <h5 class="card-title">حضور اليوم</h5>
 
                         <div class="scroll dashboard-list-with-user">
-                            @foreach($users as $user)
+                            @foreach($todayAttendances as $attendance)
                                 <div class="d-flex flex-row mb-3 pb-3 border-bottom">
                                     <a href="#">
-                                        <img src={{ (!empty($user->profile_photo_path))? $user->profile_photo_path : asset('img/profiles/no-image.png') }} alt={{ $user->name }}
-                                             class="img-thumbnail border-0 rounded-circle list-thumbnail align-self-center xsmall" />
+                                        <img class="img-thumbnail border-0 rounded-circle list-thumbnail align-self-center xsmall"
+                                             src="{{ (!empty($attendance->user->profile_photo_path))? $attendance->user->profile_photo_path : asset('img/profiles/no-image.png') }}" alt={{ $attendance->user->name }}"
+                                         />
                                     </a>
                                     <div class="pl-3">
                                         <a href="#">
-                                            <p class="font-weight-medium mb-0 ">{{ $user->name }}</p>
-                                            <p class="text-muted mb-0 text-small">09.08.2018 - 12:45</p>
+                                            <p class="font-weight-medium mb-0 ">{{ $attendance->user->name }}</p>
+                                            <p class="text-muted mb-0 text-small">{{ $attendance->entry_day }} | {{ $attendance->entry_time }}</p>
                                         </a>
                                     </div>
                                 </div>

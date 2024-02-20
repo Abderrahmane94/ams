@@ -74,16 +74,16 @@
                                 <p class="list-item-heading" style="text-align: center">{{ $attendance->user->name }}</p>
                             </td>
                             <td>
-                                <p class="text-muted" style="text-align: center">{{ date('Y-m-d', strtotime($attendance->entry_time)) }}</p>
+                                <p class="text-muted" style="text-align: center">{{ $attendance->entry_day }}</p>
                             </td>
                             <td style="text-align: center">
-                                <p class="text-muted" style="text-align: center">{{ date('H:i', strtotime($attendance->entry_time))  }}</p>
+                                <p class="text-muted" style="text-align: center">{{ $attendance->entry_time  }}</p>
                             </td>
                             <td>
-                                <p class="text-muted" style="text-align: center">{{ date('Y-m-d', strtotime($attendance->exit_time)) }}</p>
+                                <p class="text-muted" style="text-align: center">{{ $attendance->exit_day }}</p>
                             </td>
                             <td>
-                                <p class="text-muted" style="text-align: center">{{ date('H:i', strtotime($attendance->exit_time)) }}</p>
+                                <p class="text-muted" style="text-align: center">{{ $attendance->exit_time }}</p>
                             </td>
                         </tr>
                     @endforeach

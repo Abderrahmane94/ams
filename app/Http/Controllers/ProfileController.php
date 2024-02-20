@@ -12,8 +12,7 @@ class ProfileController extends Controller
 {
     public function ProfileView()
     {
-        $id = Auth::user()->id;
-        $user = User::find($id);
+        $user = User::find(Auth::user()->id);
 
         return view('doreViews.admin.user.view_profile', compact('user'));
     }
@@ -21,8 +20,7 @@ class ProfileController extends Controller
 
     public function ProfileEdit()
     {
-        $id = Auth::user()->id;
-        $user = User::find($id);
+        $user = User::find(Auth::user()->id);
         return view('doreViews.admin.user.edit_profile', compact('user'));
     }
 
@@ -54,8 +52,7 @@ class ProfileController extends Controller
 
     public function PasswordView()
     {
-        $id = Auth::user()->id;
-        $user = User::find($id);
+        $user = User::find(Auth::user()->id);
 
         return view('doreViews.admin.user.edit_password', compact('user'));
     }

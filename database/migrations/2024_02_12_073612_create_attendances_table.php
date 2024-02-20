@@ -17,8 +17,10 @@ class CreateAttendancesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->dateTime('entry_time');
-            $table->dateTime('exit_time');
+            $table->date('entry_day');
+            $table->time('entry_time');
+            $table->date('exit_day');
+            $table->time('exit_time');
             $table->timestamps();
         });
     }

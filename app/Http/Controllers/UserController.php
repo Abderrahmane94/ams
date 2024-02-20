@@ -12,8 +12,8 @@ class UserController extends Controller
 {
     public function UserView()
     {
+        $data['user'] = User::find(Auth::user()->id);
         $data['allData'] = User::all();
-//        $data['allData'] = User::where('name', 'Admin')->get();
         return view('doreViews.admin.user.list_user', $data);
 
     }
@@ -41,7 +41,7 @@ class UserController extends Controller
         $data->save();
 
         $notification = array(
-            'message' => 'User Inserted Successfully',
+            'message' => 'تم إضافة المستخدم بنجاح',
             'alert-type' => 'success'
 
         );
@@ -53,8 +53,9 @@ class UserController extends Controller
 
     public function UserEdit($id)
     {
-        $editData = User::find($id);
-        return view('doreViews.admin.user.edit_user', compact('editData'));
+        $data['editData'] = User::find($id);
+        $data['user'] = User::find(Auth::user()->id);
+        return view('doreViews.admin.user.edit_user', $data);
 
     }
 
@@ -89,7 +90,7 @@ class UserController extends Controller
         $user->delete();
 
         $notification = array(
-            'message' => 'User Deleted Successfully',
+            'message' => 'تم حذف المستخدم بنجاح',
             'alert-type' => 'info'
         );
 
@@ -129,8 +130,10 @@ class UserController extends Controller
         $attendance = new Attendance;
 
         $attendance->user_id = $user->id;
-        $attendance->entry_time = $user->last_login_at;
-        $attendance->exit_time = Carbon::now();
+        $attendance->entry_day = Carbon::parse($user->last_login_at)->toDateString();
+        $attendance->entry_time = Carbon::parse($user->last_login_at)->toTimeString();
+        $attendance->exit_day = Carbon::now()->toDateString();
+        $attendance->exit_time = Carbon::now()->toTimeString();
         $attendance->save();
 
         $notification = array(
