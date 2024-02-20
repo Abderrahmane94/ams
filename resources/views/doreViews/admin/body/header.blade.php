@@ -40,6 +40,7 @@
                     @csrf
                     <span type="button" class="btn btn-outline-primary default mr-2" id="chronometer">00:00:00</span>
                     <button type="submit" class="btn btn-warning"><i class="simple-icon-logout"></i> خروج</button>
+                </form>
             @endif
         </div>
 
@@ -69,21 +70,16 @@
                 <span class="name">{{Auth::user()->name }}</span>
                 <span>
                         <img alt="Profile Picture"
-                             src="{{ (!empty(Auth::user()->profile_photo_path))? Auth::user()->profile_photo_path:asset('img/profiles/no image.png') }} "/>
+                             src="{{ (!empty(Auth::user()->profile_photo_path))? Auth::user()->profile_photo_path:asset('img/profiles/no-image.png') }} "/>
                     </span>
             </button>
 
             <div class="dropdown-menu dropdown-menu-right mt-3">
                 <a class="dropdown-item" href="{{ route('profile.view') }}">{{__('حسابي')}}</a>
                 <a class="dropdown-item" href="{{ route('password.view') }}">{{__('تغيير كلمة المرور')}}</a>
-                <a class="dropdown-item" href="{{ route('logout') }}"
-                   onclick="event.preventDefault();
-                       document.getElementById('logout-form').submit();">
-                    {{ __('خروج') }}
-                </a>
-
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                <form action="{{ route('logout') }}" method="POST">
                     @csrf
+                    <button class="dropdown-item" type="submit">{{ __('خروج') }}</button>
                 </form>
             </div>
         </div>

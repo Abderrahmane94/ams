@@ -61,7 +61,7 @@
 
                     <div class="card d-flex flex-row mb-3">
                         <a class="d-flex" >
-                            <img src=" {{ (!empty($user->profile_photo_path))? $user->profile_photo_path:asset('img/profiles/no image.png') }} " alt="Fat Rascal"
+                            <img src=" {{ (!empty($user->profile_photo_path))? $user->profile_photo_path:asset('img/profiles/no-image.png') }} " alt="Fat Rascal"
                                  class="list-thumbnail responsive border-0 card-img-left"/>
 
                         </a>

@@ -14,7 +14,7 @@
 
                     <div class="form-group position-relative error-l-50">
                         <label>الاسم</label><span class="text-danger">*</span>
-                        <input type="text" name="name" class="form-control" value="{{ $editData->name }}">
+                        <input type="text" name="name" class="form-control" value="{{ $user->name }}">
                         <div class="invalid-tooltip">
                             {{__('Name is required')}}
                         </div>
@@ -23,7 +23,7 @@
 
                     <div class="form-group position-relative error-l-50">
                         <label>البريد الالكتروني</label><span class="text-danger">*</span>
-                        <input type="email" name="email" class="form-control" value=" {{ $editData->email }}">
+                        <input type="email" name="email" class="form-control" value=" {{ $user->email }}">
                         @error('email')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
@@ -40,7 +40,7 @@
 
                     <div class="form-group position-relative error-l-50">
                         <div class="controls">
-                            <img id="showImage" src="{{ (!empty($editData->profile_photo_path))? $editData->profile_photo_path:asset('img/profiles/no image.png') }}" style="width: 100px; width: 100px; border: 1px solid #000000;">
+                            <img id="showImage" src="{{ (!empty($user->profile_photo_path))? $user->profile_photo_path:asset('img/profiles/no-image.png') }}" style="width: 100px; width: 100px; border: 1px solid #000000;">
 
                         </div>
                     </div>

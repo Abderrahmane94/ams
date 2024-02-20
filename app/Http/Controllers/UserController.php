@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Attendance;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -19,7 +20,8 @@ class UserController extends Controller
 
     public function UserAdd()
     {
-        return view('doreViews.admin.user.add_user');
+        $data['user'] = User::find(Auth::user()->id);
+        return view('doreViews.admin.user.add_user',$data);
     }
 
 
@@ -35,7 +37,7 @@ class UserController extends Controller
 
         $data->name = $request->name;
         $data->email = $request->email;
-        $data->password = bcrypt($request->password);
+        $data->password = bcrypt('12345');
         $data->save();
 
         $notification = array(
@@ -124,11 +126,25 @@ class UserController extends Controller
         $user->login_status = false;
         $user->save();
 
+        $attendance = new Attendance;
+
+        $attendance->user_id = $user->id;
+        $attendance->entry_time = $user->last_login_at;
+        $attendance->exit_time = Carbon::now();
+        $attendance->save();
+
         $notification = array(
             'message' => 'خروج مسجل بنجاح',
             'alert-type' => 'success'
         );
 
         return redirect()->back()->with($notification);
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+
+        return redirect('/');
     }
 }

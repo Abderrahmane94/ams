@@ -15,7 +15,7 @@
                       action="{{ route('profile.edit') }}">
                     @csrf
                     <a  class="lightbox">
-                        <img alt="Profile" src="{{ (!empty($user->profile_photo_path))? $user->profile_photo_path:asset('img/profiles/no image.png') }} " class="img-thumbnail card-img social-profile-img">
+                        <img alt="Profile" src="{{ (!empty($user->profile_photo_path))? $user->profile_photo_path:asset('img/profiles/no-image.png') }} " class="img-thumbnail card-img social-profile-img">
                     </a>
                     <div class="form-group position-relative error-l-50">
                         <label>Name</label>

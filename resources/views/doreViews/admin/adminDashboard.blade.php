@@ -67,7 +67,7 @@
                             @foreach($users as $user)
                                 <div class="d-flex flex-row mb-3 pb-3 border-bottom">
                                     <a href="#">
-                                        <img src={{ $user->profile_photo_path }} alt={{ $user->name }}
+                                        <img src={{ (!empty($user->profile_photo_path))? $user->profile_photo_path : asset('img/profiles/no-image.png') }} alt={{ $user->name }}
                                              class="img-thumbnail border-0 rounded-circle list-thumbnail align-self-center xsmall" />
                                     </a>
                                     <div class="pl-3">

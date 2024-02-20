@@ -31,14 +31,6 @@
                         </div>
                     </div>
 
-                    <div class="form-group position-relative error-l-50">
-                        <label>كلمة المرور</label><span class="text-danger">*</span>
-                        <input type="password" name="password" class="form-control" required="">
-                        <div class="invalid-tooltip">
-                            {{__('email is required')}}
-                        </div>
-                    </div>
-
                     <input type="submit" class="btn btn-primary mb-0" value="{{__('حفظ')}}">
                 </form>
             </div>

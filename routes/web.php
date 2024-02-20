@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 
@@ -46,6 +47,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/store', [UserController::class, 'UserStore'])->name('users.store');
 
         Route::get('/edit/{id}', [UserController::class, 'UserEdit'])->name('users.edit');
+
         Route::post('/update/{id}', [UserController::class, 'UserUpdate'])->name('users.update');
 
         Route::get('/delete/{id}', [UserController::class, 'UserDelete'])->name('users.delete');
@@ -80,6 +82,13 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/dashboard', [UserController::class, 'index'])->name('user.dashboard');
         Route::post('/signin', [UserController::class, 'signIn'])->name('user.signin');
         Route::post('/signout', [UserController::class, 'signOut'])->name('user.signout');
+        Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+    });
+
+    // Report Routes
+
+    Route::prefix('report')->group(function () {
+        Route::get('/view', [ReportController::class, 'index'])->name('report.view');
     });
 
 

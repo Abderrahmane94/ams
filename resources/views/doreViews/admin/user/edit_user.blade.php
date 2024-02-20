@@ -42,7 +42,7 @@
 
                     <div class="form-group position-relative error-l-50">
                         <div class="controls">
-                            <img id="showImage" src="{{ (!empty($editData->profile_photo_path))? $editData->profile_photo_path:asset('img/profiles/no image.png') }}" style="width: 100px; width: 100px; border: 1px solid #000000;">
+                            <img id="showImage" src="{{ (!empty($editData->profile_photo_path))? $editData->profile_photo_path:asset('img/profiles/no-image.png') }}" style="width: 100px; width: 100px; border: 1px solid #000000;">
 
                         </div>
                     </div>
